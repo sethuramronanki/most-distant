@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+// Complete the solve function below.
+long double solve(long double mx,long double my,long double lx,long double ly) {
+    long double i =(mx-lx);
+    long double j =(my-ly);
+    long double k =sqrt(mx*mx+my*my);
+    long double l =sqrt(lx*lx+ly*ly);
+    long double t=i;
+    if(j>t){
+        t=j;
+    }
+    if(k>t){
+        t=k;
+    }
+    if(l>t){
+        t=l;
+    }
+    return t;
+}
+ 
+int main()
+{
+    int n;
+    long double mx=0;long double lx=1000000000;
+    long double my=0;long double ly=1000000000;
+    cin >> n;
+    vector<vector<int>> coordinates(n);
+    for (int coordinates_row_itr = 0; coordinates_row_itr < n; coordinates_row_itr++) {
+        coordinates[coordinates_row_itr].resize(2);
+ 
+        for (int coordinates_column_itr = 0; coordinates_column_itr < 2; coordinates_column_itr++) {
+            cin >> coordinates[coordinates_row_itr][coordinates_column_itr];
+ 
+        }
+        if(coordinates[coordinates_row_itr][0]>mx){
+                mx=coordinates[coordinates_row_itr][0];
+            }if(coordinates[coordinates_row_itr][1]>my){
+                my=coordinates[coordinates_row_itr][1];
+            }if(coordinates[coordinates_row_itr][0]<lx){
+                lx=coordinates[coordinates_row_itr][0];
+            }if(coordinates[coordinates_row_itr][1]<ly){
+                ly=coordinates[coordinates_row_itr][1];
+            }
+    }
+    cout<<solve(mx,my,lx,ly)<<endl;
+    return 0;
+}
+ 
